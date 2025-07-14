@@ -90,3 +90,14 @@ st.download_button(
     file_name="painel_produtores_filtrado.csv",
     mime="text/csv"
 )
+
+# Rodapé com marca e citação
+st.markdown(
+    """
+    <hr style="margin-top: 50px; margin-bottom: 10px;"/>
+    <div style="text-align: center; font-size: 12px; color: gray;">
+        R&L Data Solutions | <i>Habacuque 2:2 - "Escreve a visão, grava-a sobre tábuas, para que a possa ler até quem passa correndo."</i>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
