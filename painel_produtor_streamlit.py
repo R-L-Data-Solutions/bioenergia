@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from PIL import Image
+import time
 
 
 st.set_page_config(page_title="Painel do Produtor", layout="wide")
@@ -22,7 +23,7 @@ Sistema de acompanhamento das etapas de liberação de crédito rural.
 Filtre abaixo pelo nome do produtor, CPF, município ou agência para visualizar o status atual.
 """)
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def carregar_dados():
     url = "https://docs.google.com/spreadsheets/d/1RxiB6hYWG41Kycbw4yGprncC9P91BSV8y_8-0OEnosQ/export?format=csv"
     return pd.read_csv(url)
