@@ -93,7 +93,7 @@ colunas_exibir = [
     "DATA DE RECEBIMENTO", "PRODUTOR.1", "DIRETORIA", "CARTÓRIO",
     "RECURSO LIBERADO", "DATA DE ENVIO AO BANCO",
     "HECTARE", "QUANTIDADE DE MUDAS", "VALOR MUDAS",
-    "ENDEREÇO", "POLO"
+    "ENDEREÇO", "POLO", "LAUDO - 1", "LAUDO - 2", "LAUDO - 3"
 ]
 colunas_existentes = [col for col in colunas_exibir if col in df.columns]
 st.dataframe(df[colunas_existentes], use_container_width=True)
