@@ -38,6 +38,8 @@ def carregar_dados():
     #     return pd.DataFrame()
 
 df = carregar_dados()
+df = df.dropna(subset=["AGÊNCIA"])
+
 
 if df.empty:
     st.warning("Nenhum dado carregado. Verifique o arquivo local ou o link da nuvem.")
