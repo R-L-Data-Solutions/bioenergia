@@ -29,22 +29,17 @@ Acompanhar, filtrar e visualizar dados em tempo real sobre o andamento das cédu
 ```bash
 git clone https://github.com/R-L-Data-Solutions/produtor-dashboard.git
 cd produtor-dashboard
+
 2. Crie um ambiente virtual:
-bash
-Copiar
-Editar
+
 python -m venv venv
 source venv/bin/activate     # Linux/Mac
 venv\Scripts\activate        # Windows
 3. Instale as dependências:
-bash
-Copiar
-Editar
+
 pip install -r requirements.txt
 4. Execute a aplicação:
-bash
-Copiar
-Editar
+
 streamlit run painel_produtor_streamlit.py
 📝 Acesso ao Google Sheets
 Caso use dados online:
