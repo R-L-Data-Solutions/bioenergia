@@ -47,7 +47,18 @@ if df.empty:
 st.sidebar.header("🔎 Filtros")
 nome_produtor = st.sidebar.text_input("Nome do Produtor")
 cpf = st.sidebar.text_input("CPF")
-agencia = st.sidebar.text_input("Agência")
+#agencia = st.sidebar.text_input("Agência")
+# Garante que todos os valores estejam formatados corretamente
+df["AGÊNCIA"] = df["AGÊNCIA"].astype(str).str.strip().str.upper()
+
+# Pega valores únicos (sem nulos), ordenados
+agencias_unicas = sorted(df["AGÊNCIA"].dropna().unique())
+agencia = st.sidebar.selectbox("Agência", ["Todas"] + agencias_unicas)
+
+# Aplica filtro se diferente de "Todas"
+if agencia != "Todas":
+    df = df[df["AGÊNCIA"] == agencia]
+
 municipio = st.sidebar.text_input("Município")
 status_busca = st.sidebar.selectbox("Status (em qualquer etapa)", ["Todos", "DESISTIU", "DILIGÊNCIA", "ENVIADO", "LIBERADO", "NÃO ENVIADO"])
 
@@ -56,8 +67,10 @@ if nome_produtor:
     df = df[df["PRODUTOR"].str.contains(nome_produtor, case=False, na=False)]
 if cpf:
     df = df[df["CPF"].astype(str).str.contains(cpf, na=False)]
-if agencia:
-    df = df[df["AGÊNCIA"].astype(str).str.contains(agencia, na=False)]
+if agencia != "Todas":
+    df = df[df["AGÊNCIA"] == agencia]
+# if agencia:
+#     df = df[df["AGÊNCIA"].astype(str).str.contains(agencia, na=False)]
 if municipio:
     df = df[df["MUNICÍPIO"].str.contains(municipio, case=False, na=False)]
 if status_busca != "Todos":
